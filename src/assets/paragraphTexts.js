@@ -1,4 +1,4 @@
-export const paragrafsText = [
+export const paragraphTexts = [
     'Morbi id blandit felis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed et ante vel dolor efficitur egestas. Praesent ut libero sit amet purus porta ultrices non et neque. Nunc vestibulum est sit amet metus cursus, a viverra nibh porta. Nulla turpis justo, vehicula et augue at, tristique lacinia risus.',
 
     'Aliquam ullamcorper, leo id pellentesque fringilla, ante magna lobortis sem, ut pulvinar massa mi vel nibh. Proin mi metus, bibendum quis vehicula ultrices, porttitor eget eros. Fusce sit amet maximus lacus. Nullam luctus eleifend metus at consectetur. Sed neque nulla, dapibus ut magna ac, dapibus mattis lectus.',
