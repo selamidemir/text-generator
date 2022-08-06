@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import FormContext from '../context/formContext';
-import { paragraphTexts } from '../assets/paragraphTexts';
 
 function Paragraphs() {
     const { number, useHtml } = useContext(FormContext);

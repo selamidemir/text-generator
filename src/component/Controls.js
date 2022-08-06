@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
-import FormContext from '../context/formContext';
+import { useDispatch } from 'react-redux';
+import { setHtml, setNumber } from '../redux/formSlice';
 
 function Controls() {
-    const { number, setNumber, useHtml, setUseHtml } = useContext(FormContext);
+    const dispatch = useDispatch();
 
     const handleNumberChange = (e) => {
-        setNumber(e.target.value);
+        dispatch(setNumber(e.target.value));
     }
 
     const handleHtmlChange = (e) => {
-        setUseHtml(e.target.value);
-
+        dispatch(setUseHtml(e.target.value));
     }
 
     return (
