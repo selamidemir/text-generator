@@ -1,5 +1,5 @@
 {
-  "name": "paragraf-app",
+  "name": "text-generator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
