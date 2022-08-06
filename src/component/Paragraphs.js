@@ -1,35 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react';
-import FormContext from '../context/formContext';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fecthText } from '../redux/formSlice';
+import Loading from './Loading';
+import Error from './Error';
+
 
 function Paragraphs() {
-    const { number, useHtml } = useContext(FormContext);
-    const [paragraphs, setParagraphs] = useState([]);
+    const paragraphs = useSelector(state => state.form.items);
+    const number = useSelector(state => state.form.number);
+    const type = useSelector(state => state.form.type);
+    const isLoading = useSelector(state => state.form.isLoading);
+    const error = useSelector(state => state.form.error);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const createParagraphs = () => {
-            if (number <= 0) return [];
-            return getParagraphText(number);
-        }
-
-        const getParagraphText = (paragraphsCount) => {
-            const textsArray = [];
-            let text = paragraphTexts[Math.floor(Math.random() * paragraphTexts.length)];
-            if (useHtml === 'Yes') text = `<p>${text}</p>`;
-            textsArray.push(text);
-            if (paragraphsCount > 1) {
-                paragraphsCount -= 1;
-                textsArray.push(...getParagraphText(paragraphsCount));
-            }
-            return textsArray;
-        }
-
-        setParagraphs(createParagraphs());
-
-    }, [number, useHtml]);
+        dispatch(fecthText({number: number, type:type}));
+    },[number, type, dispatch]);
 
     return (
         <div className='generated-text'>
-            {paragraphs.map((text, key) => <p key={key}>{text}</p>)}
+            { isLoading && <Loading />}
+            { error && <Error message={error} />}
+            { !isLoading && !error && paragraphs && paragraphs }
         </div>
     );
 }
